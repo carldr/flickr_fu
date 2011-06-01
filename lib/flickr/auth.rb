@@ -21,10 +21,15 @@ class Flickr::Auth < Flickr::Base
   #       :read - permission to read private information (DEFAULT)
   #       :write - permission to add, edit and delete photo metadata (includes 'read')
   #       :delete - permission to delete photos (includes 'write' and 'read')
+  # * extra (Optional)
+  #     sets a string which is passed back to your callback URL as a parameter called 'extra'
   # 
-  def url(perms = :read)
+  def url(perms = :read, extra = nil )
     options = {:api_key => @flickr.api_key, :perms => perms, :frob => self.frob}
+    options[ :extra ] = extra if extra
+
     @flickr.sign_request(options)
+
     Flickr::Base::AUTH_ENDPOINT + "?" + options.collect{|k,v| "#{k}=#{v}"}.join('&')
   end
 
