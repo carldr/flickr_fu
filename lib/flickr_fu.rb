@@ -33,6 +33,7 @@ require 'date'
   "contact",
   "geo",
   "location",
+	"tags",
   "urls" ].each do |file|
   require File.join(File.dirname(__FILE__), 'flickr', file)
 end
