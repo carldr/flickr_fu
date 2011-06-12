@@ -135,7 +135,10 @@ module Flickr
     # creates and/or returns the Flickr::Urls object
     def urls() @urls ||= Flickr::Urls.new(self) end
             
-    protected
+    # creates and/or returns the Flickr::Tags object
+    def tags() @tags ||= Flickr::Tags.new(self) end
+    
+		protected
     
     # For easier testing. You can mock this method with a XML file you're expecting to receive
     def request_over_http(options, http_method, endpoint)
