@@ -3,7 +3,7 @@ class Flickr::Tags < Flickr::Base
     @flickr = flickr
   end
   
-  # Get the authorized user's contact list.
+  # Get the authorized user's tag list.
   # 
   def get_list_user(options={})
     rsp = @flickr.send_request('flickr.tags.getListUser', options)
