@@ -88,6 +88,7 @@ module Flickr
       rsp = request_over_http(options, http_method, endpoint)
       
       rsp = '<rsp stat="ok"></rsp>' if rsp == ""
+
       xm = XmlMagic.new(rsp)
       
       if xm[:stat] == 'ok'
@@ -137,6 +138,9 @@ module Flickr
             
     # creates and/or returns the Flickr::Tags object
     def tags() @tags ||= Flickr::Tags.new(self) end
+
+    # creates and/or returns the Flickr::Collections object
+    def collections() @collections ||= Flickr::Collections.new(self) end
     
 		protected
     
